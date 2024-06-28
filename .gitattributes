@@ -1,0 +1,5 @@
+# Ensure all text files use LF in the repository and convert to CRLF on Windows checkout
+* text=auto
+
+# Explicitly set line endings for JSON files to LF
+*.json text eol=lf
