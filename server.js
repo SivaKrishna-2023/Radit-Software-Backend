@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
+const path = require("path")
 const consultantRoutes = require('./routes/consultant');
 require('dotenv').config();
 
@@ -18,6 +19,13 @@ app.use('/api/consultants', consultantRoutes);
 app.get('/', (req, res) => {
   res.status(200).send('Welcome to the Radit Software Backend!');
 });
+
+// production script
+
+app.use(express.static("./Radit-software-Frontend1/build"));
+app.get("*", (req, res) =>{
+  res.sendFile(this.path.resolve(__dirname, "Radit-software-Frontend1", "build", "index.html"))
+})
 
 // Start the server only if not in test environment
 if (process.env.NODE_ENV !== 'test') {
